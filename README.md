@@ -25,7 +25,7 @@ Comentaris de cada exercici:
 7) Obtenim quatre imatges amb la combinació d’aplicar low-pass i high-pass filters. Per tenir les imatges hem executat el codi en un jupyternotebook. Hem penjat al git el resultat com a DWT_results
 
 ## Practica 1
-Tenim dos endpoints `service1` i `service2`:
+Tenim dos endpoints `service1` i `service2` creats amb `FastAPI`:
 - Service1: implemeta tres funcionalitats
   - `/`: retorna `{"Hello": "World"}`
   - `/rgb_to_yuv/{R}/{G}/{B}`: transforma cordenades RGB a YUV
@@ -33,3 +33,24 @@ Tenim dos endpoints `service1` i `service2`:
  
 - Service2: implementa una funcionalitat
   - `/ffmpeg_bw/`: transforma una imatge a blanc i negre (fitxer passat a traves de l'API)
+ 
+Per crear les imatges docker, en el terminal a la carpeta de cada servei:
+
+```
+docker build -t service1 .
+```
+
+```
+docker build -t service2 .
+```
+
+Per engegar els containers:
+
+```
+docker run -d --name service1_container -p 80:80 service1
+```
+
+```
+docker run -d --name service2__container -p 80:80 service2
+```
+ 
