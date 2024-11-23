@@ -55,3 +55,11 @@ docker run -d --name service2__container -p 80:80 service2
 ```
 Per provar les diferents funcionalitats:
 Utilitzar en el navegador `http://127.0.0.1/docs`
+
+Per executar els dos serveis amb el compose, anar a la carpeta principal i executar:
+
+```
+docker-compose up -d --build
+```
+
+Utilitzar en el navegador `http://127.0.0.1:8001/docs` i `http://127.0.0.1:8000/docs`
