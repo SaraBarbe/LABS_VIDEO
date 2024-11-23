@@ -53,4 +53,5 @@ docker run -d --name service1_container -p 80:80 service1
 ```
 docker run -d --name service2__container -p 80:80 service2
 ```
- 
+Per provar les diferents funcionalitats:
+Utilitzar en el navegador `http://127.0.0.1/docs`
