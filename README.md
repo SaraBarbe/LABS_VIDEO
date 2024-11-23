@@ -1,5 +1,7 @@
 # LABS_VIDEO
 
+## Seminari 1
+
 Tenim tres fitxers:
 
 - Seminari1.py: Aquí tenim totes les classes i mètodes
@@ -21,3 +23,35 @@ Comentaris de cada exercici:
 6) Pel nostre test, hem comprovat la funció creada amb el resultat de la llibreria fftpack
 
 7) Obtenim quatre imatges amb la combinació d’aplicar low-pass i high-pass filters. Per tenir les imatges hem executat el codi en un jupyternotebook. Hem penjat al git el resultat com a DWT_results
+
+## Practica 1
+Tenim dos endpoints `service1` i `service2` creats amb `FastAPI`:
+- Service1: implemeta tres funcionalitats
+  - `/`: retorna `{"Hello": "World"}`
+  - `/rgb_to_yuv/{R}/{G}/{B}`: transforma cordenades RGB a YUV
+  - `/ffmpeg_resize/{scale_x}/{scale_y}`: escala una imatge (fitxer passat a traves de l'API)
+ 
+- Service2: implementa una funcionalitat
+  - `/ffmpeg_bw/`: transforma una imatge a blanc i negre (fitxer passat a traves de l'API)
+ 
+Per crear les imatges docker, en el terminal a la carpeta de cada servei:
+
+```
+docker build -t service1 .
+```
+
+```
+docker build -t service2 .
+```
+
+Per engegar els containers:
+
+```
+docker run -d --name service1_container -p 80:80 service1
+```
+
+```
+docker run -d --name service2__container -p 80:80 service2
+```
+Per provar les diferents funcionalitats:
+Utilitzar en el navegador `http://127.0.0.1/docs`
