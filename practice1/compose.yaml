@@ -1,0 +1,23 @@
+services:
+  resize:
+    build: ./service1
+    container_name: practice1_resize
+    networks:
+      - frontend
+    ports:
+     - "8000:80"
+
+  bw:
+    build: ./service2
+    container_name: practice1_bw
+    networks:
+      - frontend
+    ports:
+     - "8001:80"
+
+networks:
+  frontend:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
+
