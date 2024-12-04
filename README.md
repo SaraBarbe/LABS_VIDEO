@@ -63,3 +63,25 @@ docker-compose up -d --build
 ```
 
 Utilitzar en el navegador `http://127.0.0.1:8001/docs` i `http://127.0.0.1:8000/docs`
+
+## Seminari 2
+Service1: implementa tots els exercicis. A continuació trobem explicació de què fa cada punt.
+  - `ffmpeg_resize_v`: modifica resolució del vídeo proporcionat
+  - `ffmpeg_chroma`: canvia chroma sampling ( no veiem diferència en el color del vídeo de sortida).
+  - `ffmpeg_i`: retorna nom del codec, amplada, alçada, durada i bit rate del vídeo.
+  - ffmpeg_audio: extreu 20s de video sense audio i l'audio de 20s de video en `aac`, `mp3` i `ac3`. Després ho trona ajuntar tot.
+  - `ffmpeg_tracks`: retorna els tracks del fitxer proporcionat
+  - `ffmpeg_motion`: retorna el vídeo amb motion vectors
+  - `ffmpeg_histogram`: retorna el vídeo amb histograma YUV
+ 
+Per crear la imatga docker, en el terminal a la carpeta de servei1:
+
+```
+docker build -t service1 .
+```
+Per engegar el container:
+
+```
+docker run -d --name service1_container -p 80:80 service1
+```
+Utilitzar en el navegador `http://127.0.0.1/docs`
