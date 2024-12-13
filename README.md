@@ -85,3 +85,24 @@ Per engegar el container:
 docker run -d --name service1_container -p 80:80 service1
 ```
 Utilitzar en el navegador `http://127.0.0.1/docs`
+
+
+## Practica 2
+
+Hem creat una GUI. Hem afegit les funcionalitats:
+- `ffmpeg_videoconvert`: converteix el video a VP8, VP9, h265 o AV1.
+- `ffmpeg_encoding_ladder`: pots triar quina qualitat vols el video, high, medium, low.
+
+Per crear la imatga docker, en el terminal a la carpeta practice2:
+
+```
+docker build -t practice2 .      
+```
+Per engegar el container:
+
+```
+docker run -d --name service1_container -p 80:80 practice2
+```
+Utilitza `http://127.0.0.1/` i estaras dins la GUI que hem creat i podras probar cada endpoint.
+
+Nota: no ens ha donat temps de fer unit test
