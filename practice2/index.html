@@ -1,0 +1,166 @@
+<html>
+<head>
+    <title>My API</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+
+<h2 class="w3-center">Tria que vols fer</h2>
+
+    <div class="w3-row-padding w3-light-blue">
+        <h2>Image resize</h2>
+        <label for="scale_x">Scale x:</label>
+        <input type="text" id="scale_x" name="scale_x" value="400" onchange="resize_params()">
+
+        <label for="scale_y">Scale y:</label>
+        <input type="text" id="scale_y" name="scale_y" value="350" onchange="resize_params()">
+
+        <form class="w3-margin-top" id="resize_fun" action="/ffmpeg_resize/400/350" enctype="multipart/form-data" method="post">
+            <label for="input_file">Input File:</label>
+            <input type="file" id="input_file" name="input_file">
+            <input class="w3-button w3-light-grey w3-block w3-margin-top" type="submit" value="Execute">
+        </form>
+    </div>
+
+    <div class="w3-row-padding w3-pale-blue">
+        <h2>BW</h2>
+
+        <form class="w3-margin-top" action="/ffmpeg_bw/" enctype="multipart/form-data" method="post">
+            <label for="input_file">Input File:</label>
+            <input type="file" id="input_file" name="input_file">
+            <input class="w3-button w3-light-grey w3-block w3-margin-top" type="submit" value="Execute">
+        </form>
+    </div>
+
+    <div class="w3-row-padding w3-light-blue">
+        <h2>Video resize</h2>
+        <label for="video_scale_x">Scale x:</label>
+        <input type="text" id="video_scale_x" name="video_scale_x" value="400" onchange="video_resize_params()">
+
+        <label for="video_scale_y">Scale y:</label>
+        <input type="text" id="video_scale_y" name="video_scale_y" value="350" onchange="video_resize_params()">
+
+        <form class="w3-margin-top" id="video_resize_fun" action="/ffmpeg_resize_v/400/350" enctype="multipart/form-data" method="post">
+            <label for="input_file">Input File:</label>
+            <input type="file" id="input_file" name="input_file">
+            <input class="w3-button w3-light-grey w3-block w3-margin-top" type="submit" value="Execute">
+        </form>
+    </div>
+
+    <div class="w3-row-padding w3-pale-blue">
+        <h2>Chroma change</h2>
+
+        <form class="w3-margin-top" action="/ffmpeg_chroma/" enctype="multipart/form-data" method="post">
+            <label for="input_file">Input File:</label>
+            <input type="file" id="input_file" name="input_file">
+            <input class="w3-button w3-light-grey w3-block w3-margin-top" type="submit" value="Execute">
+        </form>
+    </div>
+
+    <div class="w3-row-padding w3-light-blue">
+        <h2>Audio descompose and compose</h2>
+
+        <form class="w3-margin-top" action="/ffmpeg_i/" enctype="multipart/form-data" method="post">
+            <label for="input_file">Input File:</label>
+            <input type="file" id="input_file" name="input_file">
+            <input class="w3-button w3-light-grey w3-block w3-margin-top" type="submit" value="Execute">
+        </form>
+    </div>
+
+    <div class="w3-row-padding w3-pale-blue">
+        <h2>Vidio information</h2>
+
+        <form class="w3-margin-top" action="/ffmpeg_audio/" enctype="multipart/form-data" method="post">
+            <label for="input_file">Input File:</label>
+            <input type="file" id="input_file" name="input_file">
+            <input class="w3-button w3-light-grey w3-block w3-margin-top" type="submit" value="Execute">
+        </form>
+    </div>
+
+    <div class="w3-row-padding w3-light-blue">
+        <h2>How many audio tracks?</h2>
+
+        <form class="w3-margin-top" action="/ffmpeg_tracks/" enctype="multipart/form-data" method="post">
+            <label for="input_file">Input File:</label>
+            <input type="file" id="input_file" name="input_file">
+            <input class="w3-button w3-light-grey w3-block w3-margin-top" type="submit" value="Execute">
+        </form>
+    </div>
+
+    <div class="w3-row-padding w3-pale-blue">
+        <h2>Motion</h2>
+
+        <form class="w3-margin-top" action="/ffmpeg_motion/" enctype="multipart/form-data" method="post">
+            <label for="input_file">Input File:</label>
+            <input type="file" id="input_file" name="input_file">
+            <input class="w3-button w3-light-grey w3-block w3-margin-top" type="submit" value="Execute">
+        </form>
+    </div>
+
+    <div class="w3-row-padding w3-light-blue">
+        <h2>Histogram</h2>
+
+        <form class="w3-margin-top" action="/ffmpeg_histogram/" enctype="multipart/form-data" method="post">
+            <label for="input_file">Input File:</label>
+            <input type="file" id="input_file" name="input_file">
+            <input class="w3-button w3-light-grey w3-block w3-margin-top" type="submit" value="Execute">
+        </form>
+    </div>
+
+    <div class="w3-row-padding w3-pale-blue">
+        <h2>Convert video to VP9, VP8, h265, AV1</h2>
+
+        <label for="type">Type:</label>
+        <input type="text" id="type" name="type" value="VP9" onchange="video_convert()">
+
+        <form class="w3-margin-top" id="video_type" action="/ffmpeg_videoconvert/type?type=VP9" enctype="multipart/form-data" method="post">
+            <label for="input_file">Input File:</label>
+            <input type="file" id="input_file" name="input_file">
+            <input class="w3-button w3-light-grey w3-block w3-margin-top" type="submit" value="Execute">
+        </form>
+
+    </div>
+
+    <div class="w3-row-padding w3-light-blue">
+        <h2>Chose if you want the video with high, medium or low quality</h2>
+
+        <label for="quality">Quality: </label>
+        <input type="text" id="quality" name="quality" value="high" onchange="video_quality()">
+
+        <form class="w3-margin-top" id="video_quality" action="/ffmpeg_encoding_ladder/quality?quality=high" enctype="multipart/form-data" method="post">
+            <label for="input_file">Input File:</label>
+            <input type="file" id="input_file" name="input_file">
+            <input class="w3-button w3-light-grey w3-block w3-margin-top" type="submit" value="Execute">
+        </form>
+
+    </div>
+
+<script>
+
+    function resize_params() {
+        var scale_x = document.getElementById("scale_x").value
+        var scale_y = document.getElementById("scale_y").value
+        var form = document.getElementById("resize_fun")
+        form.action = "/ffmpeg_resize/" + scale_x + "/" + scale_y;
+    }
+
+    function video_resize_params() {
+        var scale_x = document.getElementById("video_scale_x").value
+        var scale_y = document.getElementById("video_scale_y").value
+        var form = document.getElementById("video_resize_fun")
+        form.action = "/ffmpeg_resize_v/" + scale_x + "/" + scale_y;
+    }
+
+    function video_quality() {
+        var quality = document.getElementById("quality").value
+        var form = document.getElementById("video_quality")
+        form.action = "/ffmpeg_encoding_ladder/" + "quality?quality=" + quality;
+    }
+
+</script>
+
+</body>
+</html>
